@@ -44,4 +44,12 @@ describe('Component ResultBox', () => {
     expect(container).toHaveTextContent('PLN 100.00 = PLN 100.00');
     cleanup();
   });
+  it('should throw error when negative number', () => {
+    render(<ResultBox from='USD' to='PLN' amount={-20} />);
+    const container = screen.getByTestId('container');
+    expect(container).toHaveTextContent(
+      'Wrong value, please enter positive number'
+    );
+    cleanup();
+  });
 });
